@@ -10,17 +10,17 @@ from selenium.webdriver.common.by import By
 def check_proxy(driver):
     driver.get('http://www.whatismyproxy.com/')
     proxy_check = driver.find_element(By.XPATH, '//div[@class="information"]')
-    print(proxy_check.json)
+    print(proxy_check.text.strip())
 
 
 
 def main():
 
+    time.sleep(5)
     driver = get_driver()
 
     try:
-        proxyText = check_proxy(driver)
-        print(proxyText)
+        print(check_proxy(driver))
 
     except Exception:
         print(traceback.format_exc())
